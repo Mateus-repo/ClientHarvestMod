@@ -6,9 +6,16 @@
   "description": "Colhe e replanta automaticamente ao clicar com o botão direito nas plantações (client-side).",
   "authors": ["Mateus"],
   "license": "MIT",
+  "icon": "assets/rightclick_replant/icon.png",
   "environment": "client",
   "entrypoints": {
-    "client": ["com.example.rightclickreplant.RightClickReplantClient"]
+    "client": ["com.example.rightclickreplant.RightClickReplantClient"],
+    "modmenu": ["com.example.rightclickreplant.ModMenuIntegration"]
+  },
+  "custom": {
+    "modmenu": {
+      "badges": ["client"]
+    }
   },
   "depends": {
     "fabricloader": ">=0.19.5",

@@ -32,10 +32,17 @@ public class RightClickReplantClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		UseBlockCallback.EVENT.register((player, level, hand, hitResult) -> {
+			AutoPlantConfig config = AutoPlantConfig.get();
+			if (!config.enabled) {
+				return InteractionResult.PASS;
+			}
 			if (!level.isClientSide() || hand != InteractionHand.MAIN_HAND) {
 				return InteractionResult.PASS;
 			}
 			if (player.isSpectator() || player.isShiftKeyDown()) {
+				return InteractionResult.PASS;
+			}
+			if (config.onlyWithEmptyHand && !player.getMainHandItem().isEmpty()) {
 				return InteractionResult.PASS;
 			}
 
@@ -75,7 +82,7 @@ public class RightClickReplantClient implements ClientModInitializer {
 		if (seed == null || !isMature(state)) {
 			return;
 		}
-		if (!player.canInteractWithBlock(pos, 0.0)) {
+		if (!level.mayInteract(player, pos)) {
 			return;
 		}
 
@@ -83,6 +90,10 @@ public class RightClickReplantClient implements ClientModInitializer {
 		gameMode.startDestroyBlock(pos, Direction.UP);
 
 		// Replantar
+		AutoPlantConfig config = AutoPlantConfig.get();
+		if (!config.replantAutomatically) {
+			return;
+		}
 		int slot = findHotbarSlot(player, seed);
 		if (slot < 0) {
 			return;

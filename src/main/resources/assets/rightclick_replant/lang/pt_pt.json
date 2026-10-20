@@ -1,0 +1,9 @@
+{
+	"config.rightclick_replant.title": "Right Click Replant - Configurações",
+	"config.rightclick_replant.enabled": "Ativado: %s",
+	"config.rightclick_replant.replant": "Replantar automaticamente: %s",
+	"config.rightclick_replant.emptyhand": "Só com a mão vazia: %s",
+	"config.rightclick_replant.on": "Sim",
+	"config.rightclick_replant.off": "Não",
+	"config.rightclick_replant.done": "Concluído"
+}

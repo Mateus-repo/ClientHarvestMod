@@ -1,0 +1,9 @@
+{
+	"config.rightclick_replant.title": "Right Click Replant - Config",
+	"config.rightclick_replant.enabled": "Enabled: %s",
+	"config.rightclick_replant.replant": "Replant automatically: %s",
+	"config.rightclick_replant.emptyhand": "Only with empty hand: %s",
+	"config.rightclick_replant.on": "On",
+	"config.rightclick_replant.off": "Off",
+	"config.rightclick_replant.done": "Done"
+}

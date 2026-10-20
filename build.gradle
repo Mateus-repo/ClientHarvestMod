@@ -10,10 +10,21 @@ base {
 	archivesName = project.archives_base_name
 }
 
+repositories {
+	maven {
+		name = "TerraformersMC"
+		url = "https://maven.terraformersmc.com/"
+	}
+}
+
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	// Mod Menu - only for development/compile, not required at runtime
+	compileOnly "com.terraformersmc:modmenu:21.0.0"
+	runtimeOnly "com.terraformersmc:modmenu:21.0.0"
 }
 
 processResources {
@@ -25,9 +36,13 @@ processResources {
 
 tasks.withType(JavaCompile).configureEach {
 	it.options.release = 25
+	options.compilerArgs += ['-Xlint:none']
 }
 
 java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(25)
+	}
 	withSourcesJar()
 	sourceCompatibility = JavaVersion.VERSION_25
 	targetCompatibility = JavaVersion.VERSION_25
