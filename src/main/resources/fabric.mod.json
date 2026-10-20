@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "rightclick_replant",
+  "version": "${version}",
+  "name": "Right Click Replant",
+  "description": "Colhe e replanta automaticamente ao clicar com o botão direito nas plantações (client-side).",
+  "authors": ["Mateus"],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.example.rightclickreplant.RightClickReplantClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~26.3",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}
